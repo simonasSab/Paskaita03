@@ -25,6 +25,7 @@
                 isInt = int.TryParse(Console.ReadLine(), out n);
             }
             while (!isInt || n < 1);
+            Console.WriteLine();
 
             // Create and populate array of length n with random marks from 1 to 10
             int[] studentMarks = new int[n];
@@ -42,10 +43,10 @@
             Console.WriteLine();
 
             // Print average mark
-            Console.WriteLine("Studentu pazymiu vidurkis: " + studentMarks.Average() + "\n");
+            Console.WriteLine($"Studentu pazymiu vidurkis: {studentMarks.Average():.00}");
 
             // Print highest and lowest marks
-            Console.WriteLine($"Didziausias pazimys: {studentMarks.Max()}\nMaziausias pazymys: {studentMarks.Min()}\n");
+            Console.WriteLine($"Didziausias pazimys: {FindMax(studentMarks)}\nMaziausias pazymys: {FindMin(studentMarks)}\n");
 
             // Print amount of marks over 4
             Console.WriteLine($"Is {n} studentu tiek gavo teigiamus (5+) pazymius: {Marks5AndUp(studentMarks)}\n");
@@ -78,6 +79,30 @@
             }
 
             return sum;
+        }
+
+        private static int FindMax(int[] ints)
+        {
+            int maxValue = 0;
+
+            for (int i = 0; i < ints.Length; i++)
+            {
+                if (ints[i] >= maxValue)
+                    maxValue = ints[i];
+            }
+            return maxValue;
+        }
+
+        private static int FindMin(int[] ints)
+        {
+            int minValue = 10;
+
+            for (int i = 0; i < ints.Length; i++)
+            {
+                if (ints[i] <= minValue)
+                    minValue = ints[i];
+            }
+            return minValue;
         }
     }
 }
