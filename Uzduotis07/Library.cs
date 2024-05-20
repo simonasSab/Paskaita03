@@ -2,10 +2,11 @@
 {
     // Sukurkite klasę Library, kuri turės:
     // Book masyvą
+    // ---Bendra užduotis---
     // Funkciją AddBook(Book book), kuri pridės knygą į nurodytą vietą į masyvą
     // Funkciją GetBooksByAuthor(string author), kuri grąžins visas tam tikro autoriaus knygas
     // Funckija kuri atspausdina GetBooksByAuthor grazinta masyva
-
+    // --Asmeninė užduotis---
     // Patobilinti AddBook metodą, kad jis praplėstų masyvo dydį kaskart pridėdamas naują knygą.
     // Sukurti funkciją RemoveBook(int index) kuri pašalina knyga iš masyvo pagal norodytą index'ą
     // ir sumažina masyvą, nepalieka tarpo, paslenka knygas taip kad nebūtų null elementų.
@@ -31,6 +32,22 @@
                 books[i] = oldBooks[i];
             }
             books[booksLength - 1] = book;
+        }
+
+        public void AddBook(Book book, int index)
+        {
+            Book[] oldBooks = books;
+            booksLength++;
+            books = new Book[booksLength];
+            for (int i = 0; i < index; i++)
+            {
+                books[i] = oldBooks[i];
+            }
+            books[index] = book;
+            for (int i = index + 1; i < books.Length; i++)
+            {
+                books[i] = oldBooks[i - 1];
+            }
         }
 
         public Book[] GetBooksByAuthor(string author)
