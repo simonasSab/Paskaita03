@@ -16,10 +16,6 @@
             return $"{Title} {Author} {Pages}";
         }
 
-        public Book()
-        {
-
-        }
         public Book(string title, string author, int pages)
         {
             Title = title;
